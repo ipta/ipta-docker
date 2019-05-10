@@ -2,7 +2,7 @@ FROM continuumio/miniconda:latest
 
 # install build tools and LAPACK
 RUN apt-get -y update && \
-    apt-get -y install gcc g++ gfortran make autoconf automake libtool && \
+    apt-get -y install gcc g++ gfortran make autoconf automake libtool libgl1 && \
     apt-get -y install liblapack3 && \
     apt-get clean
 
@@ -28,10 +28,10 @@ RUN conda install -y \
       pandas astropy jupyter notebook ephem \
       mpi4py h5py suitesparse
 
-RUN conda install -y -c conda-forge healpy && \
-    conda clean -a
+RUN conda install -y -c conda-forge healpy
+RUN conda update -y conda && conda clean -a
 
-RUN pip install jplephem scikit-sparse corner
+RUN pip install jplephem scikit-sparse corner memory_profiler line_profiler
 
 RUN pip install libstempo --install-option="--force-tempo2-install" && \
     pip install git+https://github.com/dfm/acor@master && \

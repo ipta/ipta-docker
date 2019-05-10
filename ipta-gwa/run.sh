@@ -12,7 +12,7 @@ echo "J0437-4715" >> mypsrlist.txt
 echo "J1640+2224" >> mypsrlist.txt
 
 # run enterprise
-python gwb_analysis.py \
+mprof run python gwb_analysis.py \
   --psrlist mypsrlist.txt \
   --datadir partim_cut_IPTA \
   --outdir ./output/ \
