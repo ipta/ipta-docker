@@ -45,17 +45,9 @@ ENV MKL_NUM_THREADS=4
 RUN mkdir -p /home/ipta-gwa/
 WORKDIR /home/ipta-gwa
 
-# do we need this
-# Jupyter notebook extensions (could also be installed from conda-forge)
-#RUN pip install jupyter_contrib_nbextensions && \
-#    jupyter contrib nbextension install --user
-
 # script to run on startup
 # copy other stuff into env in this way
 COPY run.sh /home/ipta-gwa/
 COPY gwb_analysis.py /home/ipta-gwa/
 COPY sample_utils.py /home/ipta-gwa/
 
-# custom matplotlib rc (default backend: Agg)... DO WE NEED THIS?
-#RUN mkdir -p /home/ipta-gwa/.config/matplotlib 
-#COPY matplotlibrc /home/ipta-gwa/.config/matplotlib
