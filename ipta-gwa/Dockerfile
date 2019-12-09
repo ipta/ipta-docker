@@ -3,7 +3,7 @@ FROM continuumio/miniconda:latest
 # install build tools and LAPACK
 RUN apt-get -y update && \
     apt-get -y install gcc g++ gfortran make autoconf automake libtool libgl1 && \
-    apt-get -y install liblapack3 && \
+    apt-get -y install liblapack3 awscli && \
     apt-get clean
 
 # install a few other basic tools
