@@ -1,9 +1,9 @@
-FROM continuumio/miniconda:latest
+FROM continuumio/miniconda3:4.5.4
 
 # install build tools and LAPACK
 RUN apt-get -y update && \
     apt-get -y install gcc g++ gfortran make autoconf automake libtool libgl1 && \
-    apt-get -y install liblapack3 awscli && \
+    apt-get -y install liblapack3 && \
     apt-get clean
 
 # install a few other basic tools
@@ -21,14 +21,14 @@ RUN wget --no-check-certificate -q https://www.imcce.fr/content/medias/recherche
 ENV LD_LIBRARY_PATH="/usr/local/lib"
 
 # install enterprise and its deps
-RUN conda update -y conda
+#RUN conda update -y conda
 RUN conda install -y python==3.6
 RUN conda install -y \
       numpy scipy matplotlib Cython basemap \
       pandas astropy jupyter notebook ephem \
-      mpi4py h5py suitesparse
+      mpi4py h5py suitesparse 
 
-RUN conda install -y -c conda-forge healpy
+RUN conda install -y -c conda-forge healpy awscli
 RUN conda update -y conda && conda clean -a
 
 RUN pip install jplephem scikit-sparse corner memory_profiler line_profiler
@@ -38,7 +38,7 @@ RUN pip install libstempo --install-option="--force-tempo2-install" && \
     pip install git+https://github.com/jellis18/PTMCMCSampler@master && \
     pip install git+https://github.com/nanograv/PINT@master && \
     pip install git+https://github.com/nanograv/enterprise@master && \
-    pip install git+https://github.com/stevertaylor/enterprise_extensions@master
+    pip install git+https://github.com/nanograv/enterprise_extensions@master
 
 ENV MKL_NUM_THREADS=4
 
