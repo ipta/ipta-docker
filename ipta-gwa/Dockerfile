@@ -50,4 +50,4 @@ WORKDIR /home/ipta-gwa
 COPY run.sh /home/ipta-gwa/
 COPY gwb_analysis.py /home/ipta-gwa/
 COPY sample_utils.py /home/ipta-gwa/
-
+COPY s3.sh /home/ipta-gwa/
