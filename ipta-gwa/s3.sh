@@ -19,4 +19,6 @@ mprof run python gwb_analysis.py \
   --upperlimit \
   --Nsamp 1000 --thin 10
 
+aws s3 sync output/ s3://iptahack/output/
+
 # what else?
