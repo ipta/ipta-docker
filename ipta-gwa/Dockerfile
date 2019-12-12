@@ -7,7 +7,7 @@ RUN apt-get -y update && \
     apt-get clean
 
 # install a few other basic tools
-RUN apt-get -y install less gawk vim && \
+RUN apt-get -y install less gawk vim unzip && \
     apt-get clean
 
 # install calceph (needed for tempo2...)
